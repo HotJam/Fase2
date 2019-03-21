@@ -12,6 +12,11 @@
 #include <string>
 #include <sstream>
 #include "build/tinyxml2.h"
+#include "cone.h"
+#include "vertice.h"
+#include "caixa.h"
+#include "esfera.h"
+#include "plano.h"
 
 //sda
 using namespace tinyxml2;
@@ -30,48 +35,7 @@ void spherical2Cartesian() {
 	camY = radius * sin(beta);
 	camZ = radius * cos(beta) * cos(alfa);
 }
-typedef struct vertice {
-	float x;
-	float y;
-	float z;
-};
 
-vertice *conj_vertices;
-int controlador_vertices;
-
-typedef struct cone {
-
-	int n_vertices;
-	int div_horizontais;
-	int div_verticais;
-	
-	vertice *conjunto_vertices;
-};
-
-typedef struct esfera {
-
-	int n_vertices;
-	int div_horizontais;
-	int div_verticais;
-
-	vertice *conjunto_vertices;
-};
-
-
-typedef struct plano {
-
-	vertice arrayVertice[4];
-};
-
-
-
-typedef struct caixa {
-
-	int n_vertices;
-	int divisoes;
-
-	vertice *conjunto_vertices;
-};
 
 esfera esfera_temp;
 plano plano_temp;
@@ -175,10 +139,9 @@ void ler_Plano(std::string ficheiro) {
 		i++;
 		n_vertices--;
 	}
-
-
-
 }
+
+
 void ler_Caixa(std::string ficheiro) {
 	std::ifstream stream_leitura;
 	stream_leitura.open(ficheiro);
