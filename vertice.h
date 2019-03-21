@@ -7,7 +7,4 @@ typedef struct vertice {
 	float z;
 };
 
-vertice *conj_vertices;
-int controlador_vertices;
-
 #endif
