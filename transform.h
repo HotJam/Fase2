@@ -11,6 +11,7 @@ typedef struct Translacao {
 };
 
 typedef struct Rotacao {
+	float angle;
 	float x, y, z;
 };
 
