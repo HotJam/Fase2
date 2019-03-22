@@ -119,6 +119,12 @@ void ler_Plano(std::string ficheiro) {
 		n_vertices = stoi(line);
 	}
 
+	//alocar espaço para struct plano
+	plano_temp = (plano)malloc(sizeof(plano));
+	plano_temp.arrayVertice = malloc(n_vertices * sizeof(vertice));
+	//alocar espaço para struct vertice
+	vertice v = (vertice)malloc(sizeof(vertice));
+
 	//ler vertices
 	while (n_vertices > 0) {
 		if (!getline(stream_leitura, line)) break;
@@ -131,11 +137,13 @@ void ler_Plano(std::string ficheiro) {
 		vertice_y = std::stof(yString);
 		vertice_z = std::stof(zString);
 
-		vertice v;
+		
 		v.x = vertice_x;
 		v.y = vertice_y;
 		v.z = vertice_z;
+		
 		plano_temp.arrayVertice[i]= v;
+
 		i++;
 		n_vertices--;
 	}
@@ -161,9 +169,12 @@ void ler_Caixa(std::string ficheiro) {
 	}
 
 	//alocar array de vertices e inicializar caixa com divisoes
+	caixa_temp = (caixa)malloc(sizeof(caixa));
 	caixa_temp.conjunto_vertices = (vertice*)malloc(n_vertices * sizeof(vertice));
 	caixa_temp.divisoes = divisoes;
 	caixa_temp.n_vertices = n_vertices;
+	//alocar espaço para struct vertice
+	vertice v = (vertice)malloc(sizeof(vertice));
 
 	//ler vertices
 
@@ -178,11 +189,13 @@ void ler_Caixa(std::string ficheiro) {
 		vertice_y = std::stof(yString);
 		vertice_z = std::stof(zString);
 
-		vertice v;
+		
 		v.x = vertice_x;
 		v.y = vertice_y;
 		v.z = vertice_z;
+
 		caixa_temp.conjunto_vertices[i] = v;
+		
 		i++;
 		n_vertices--;
 	}
@@ -215,10 +228,14 @@ void ler_Cone(std::string ficheiro) {
 	}
 
 	//alocar array de vertices e inicializar cone com divisoes
+	cone_temp = (cone)malloc(sizeof(cone));
 	cone_temp.conjunto_vertices = (vertice*)malloc(n_vertices*sizeof(vertice));
 	cone_temp.n_vertices = n_vertices;
 	cone_temp.div_verticais = div_verticais;
 	cone_temp.div_horizontais = div_horizontais;
+
+	//alocar espaço para struct vertice
+	vertice v = (vertice)malloc(sizeof(vertice));
 
 	//ler vertices
 
@@ -233,11 +250,12 @@ void ler_Cone(std::string ficheiro) {
 		vertice_y = std::stof(yString);
 		vertice_z = std::stof(zString);
 
-		vertice v;
 		v.x = vertice_x;
 		v.y = vertice_y;
 		v.z = vertice_z;
+
 		cone_temp.conjunto_vertices[i] = v;
+		
 		/*stream_escrita << cone_temp.div_verticais << ","<<cone_temp.div_horizontais <<","<< cone_temp.n_vertices << std::endl;
 		stream_escrita << cone_temp.conjunto_vertices[i].x << "," << cone_temp.conjunto_vertices[i].y << "," << cone_temp.conjunto_vertices[i].z << std::endl;*/
 		i++;
@@ -271,11 +289,15 @@ void ler_Esfera(std::string ficheiro) {
 		n_vertices = stoi(line);
 	}
 
-	//alocar array de vertices e inicializar cone com divisoes
+	//alocar array de vertices e inicializar esfera
+	esfera_temp = (esfera)malloc(sizeof(esfera));
 	esfera_temp.conjunto_vertices = (vertice*)malloc(n_vertices * sizeof(vertice));
 	esfera_temp.n_vertices = n_vertices;
 	esfera_temp.div_verticais = div_verticais;
 	esfera_temp.div_horizontais = div_horizontais;
+
+	//alocar espaço para struct vertice
+	vertice v = (vertice)malloc(sizeof(vertice));
 
 	//ler vertices
 
@@ -289,14 +311,16 @@ void ler_Esfera(std::string ficheiro) {
 		vertice_x = std::stof(xString);
 		vertice_y = std::stof(yString);
 		vertice_z = std::stof(zString);
-
-		vertice v;
+		
 		v.x = vertice_x;
 		v.y = vertice_y;
 		v.z = vertice_z;
+
 		esfera_temp.conjunto_vertices[i] = v;
+		
 		/*stream_escrita << cone_temp.div_verticais << ","<<cone_temp.div_horizontais <<","<< cone_temp.n_vertices << std::endl;
 		stream_escrita << cone_temp.conjunto_vertices[i].x << "," << cone_temp.conjunto_vertices[i].y << "," << cone_temp.conjunto_vertices[i].z << std::endl;*/
+		
 		i++;
 		n_vertices--;
 	}
